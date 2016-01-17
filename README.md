@@ -1,8 +1,6 @@
-# EnglishSynonym
+# EnglishThesaurus
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/english_thesaurus`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Search synonyms from http://thesaurus.com/
 
 ## Installation
 
@@ -22,7 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+thesaurus = EnglishThesaurus::Thesaurus.new('word you want to know it's synonyms')
+
+thesaurus.all_synonyms # => return all synonyms
+
+thesaurus.synonyms(relevancy: :high) # => return high relevancy synonyms. 
+# relevancy: high, middle, low 
+
+thesaurus.synonyms(relevancy: :middle, word_of_speech: 'noun') # => return synonyms filtered by relevancy and word_of_speech
+```
 
 ## Development
 
