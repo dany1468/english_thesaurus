@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in english_synonym.gemspec
+# Specify your gem's dependencies in english_thesaurus.gemspec
 gemspec
