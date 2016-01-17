@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'nokogiri'
-gem 'activesupport'
+# Specify your gem's dependencies in english_synonym.gemspec
+gemspec
