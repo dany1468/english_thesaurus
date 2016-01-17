@@ -21,7 +21,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-thesaurus = EnglishThesaurus::Thesaurus.new('word you want to know it's synonyms')
+thesaurus = EnglishThesaurus::Thesaurus.new("word you want to know it's synonyms")
 
 thesaurus.all_synonyms # => return all synonyms
 
