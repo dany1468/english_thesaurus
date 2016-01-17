@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
+require 'active_support'
+require 'active_support/core_ext'
 
 class Thesaurus
   URL = 'http://thesaurus.com/browse/'
@@ -10,10 +12,15 @@ class Thesaurus
     @url = URI.encode("#{URL}#{word}")
   end
 
-  def synonyms(relevancy:)
+  def synonyms(relevancy:, word_of_speech: nil)
     raise "illegal relevancy. choose from #{RELEVANCY_MAP}" unless RELEVANCY_MAP.include?(relevancy.to_sym)
 
-    doc.xpath("//#{relevancy_block_xpath_query(relevancy: RELEVANCY_MAP[relevancy.to_sym])}").map(&:text)
+    filtered_synonyms = all_synonyms
+    if word_of_speech
+      filtered_synonyms = all_synonyms.reject {|s| s[:word_of_speech] != word_of_speech }
+    end
+
+    filtered_synonyms.map {|s| s.slice(:word_of_speech, :description, "#{relevancy}_relevance_list".to_sym) }
   end
 
   def all_synonyms
